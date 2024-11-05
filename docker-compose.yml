@@ -1,0 +1,48 @@
+services:
+  cassandra1:
+    image: cassandra:latest
+    container_name: cassandra1
+    networks:
+      - cassandra_network
+    environment:
+      - CASSANDRA_CLUSTER_NAME=cassandra_cluster
+      - CASSANDRA_SEEDS=cassandra1
+      - CASSANDRA_DC=datacenter1
+      - CASSANDRA_RACK=rack1
+      - CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch
+    volumes:
+      - ./data:/data
+    ports:
+      - "9042:9042"
+
+  cassandra2:
+    image: cassandra:latest
+    container_name: cassandra2
+    networks:
+      - cassandra_network
+    environment:
+      - CASSANDRA_CLUSTER_NAME=cassandra_cluster
+      - CASSANDRA_SEEDS=cassandra1
+      - CASSANDRA_DC=datacenter1
+      - CASSANDRA_RACK=rack1
+      - CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch
+    volumes:
+      - ./data:/data
+    ports:
+      - "9043:9042"
+    depends_on:
+      - cassandra1
+
+  jupyter:
+    image: quay.io/jupyter/pyspark-notebook:latest
+    container_name: jupyter
+    networks:
+      - cassandra_network
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./jupyter:/home/jovyan
+
+networks:
+  cassandra_network:
+    driver: bridge
