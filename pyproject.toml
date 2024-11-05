@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "infra-cassandra"
+version = "0.1.0"
+description = ""
+authors = ["Natália Oliveira <nataliaferreiraoliveira1994@gmail.com>"]
+readme = "README.md"
+packages = [{include = "infra_cassandra"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pyspark = "^3.5.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
