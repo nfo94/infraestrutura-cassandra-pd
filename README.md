@@ -1,9 +1,12 @@
 ## Cassandra infrastructure project
 
-This a data engineering and data analysis project to showcase Cassandra. To run this
-project you need [Docker](https://www.docker.com/) and [Poetry](https://python-poetry.org/).
-It runs on Python `3.11`. If you need to change Python versions it's recommended to
-use [pyenv](https://github.com/pyenv/pyenv).
+This is a data engineering and data analysis project to showcase Cassandra. To run this
+project you need:
+
+- [Docker](https://www.docker.com/) installed and configured
+- [Poetry](https://python-poetry.org/) installed and configured
+- Python `3.11` (if you need to change Python versions it's recommended to use [pyenv](https://github.com/pyenv/pyenv))
+- Download Spark 3.5.1 ([spark-3.5.1-bin-hadoop3](https://archive.apache.org/dist/spark/spark-3.5.1/spark-3.5.1-bin-hadoop3.tgz)), extract it and save it in `./jupyter/`
 
 Run this command to generate the proper data:
 
